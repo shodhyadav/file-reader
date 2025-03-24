@@ -1,0 +1,49 @@
+1. Prerequisites
+Ensure the target machine has the following installed:
+
+Node.js → To run the backend server.
+
+npm → To manage dependencies.
+
+Web browser → To view the UI.
+
+⚙️ 2. Transfer the Project to the New Machine
+Option 1: Use a USB drive or external storage.
+
+Copy the entire project folder (backend + frontend).
+
+Option 2: Use Git or cloud storage.
+
+Push the project to a Git repository or upload it to Google Drive.
+
+Clone or download it on the target machine.
+
+bash
+Copy
+Edit
+git clone <repository-url>
+🚀 3. Install Dependencies
+Open the terminal in the project folder.
+
+Install all dependencies using:
+
+bash
+Copy
+Edit
+npm install
+This installs all the required packages from package.json (e.g., express, cors).
+
+🌐 4. Start the Backend Server
+Navigate to the backend folder:
+
+bash
+Copy
+Edit
+cd backend  
+Start the server:
+
+bash
+Copy
+Edit
+node server.js  
+The server will run on http://localhost:5000 (or the port you configured).
