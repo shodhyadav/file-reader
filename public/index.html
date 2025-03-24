@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Folder Reader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      background: #e8e8e8;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px #ccc;
+    }
+    .count {
+      font-weight: bold;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>📂 Folder Contents</h1>
+  <p style="text-align: center;">Total Files: <span id="file-count" class="count">0</span></p>
+  <ul id="file-list"></ul>
+</div>
+
+<script>
+  const fetchFolderContent = async () => {
+    try {
+      const response = await fetch('/read-folder');
+      const data = await response.json();
+
+      // Update UI
+      document.getElementById('file-count').textContent = data.totalFiles;
+      
+      const fileList = document.getElementById('file-list');
+      fileList.innerHTML = '';
+
+      data.files.forEach(file => {
+        const li = document.createElement('li');
+        li.textContent = `📄 ${file.name}`;
+        fileList.appendChild(li);
+      });
+    } catch (error) {
+      console.error('Error fetching folder content:', error);
+    }
+  };
+
+  // Initial fetch
+  fetchFolderContent();
+
+  // Auto-refresh every given seconds
+  setInterval(fetchFolderContent, 3000);
+</script>
+
+</body>
+</html>
