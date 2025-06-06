@@ -6,7 +6,13 @@ Node.js → To run the backend server.
 npm → To manage dependencies.
 
 Web browser → To view the UI.
-
+<http:listener-interceptors>
+			<http:cors-interceptor allowCredentials="true">
+				<http:origins>
+					<http:public-resource />
+				</http:origins>
+			</http:cors-interceptor>
+		</http:listener-interceptors>
 ⚙️ 2. Transfer the Project to the New Machine
 Option 1: Use a USB drive or external storage.
 
